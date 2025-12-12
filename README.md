@@ -26,7 +26,7 @@ Minicursos
 O objetivo do sistema é facilitar a organização e controle de eventos dentro de instituições educacionais, permitindo um fluxo simples e eficiente tanto para administradores quanto para participantes.
 
 ## Principais Funcionalidades
-✔ Cadastro de eventos
+- Cadastro de eventos
 
 Com informações como:
 
@@ -42,18 +42,70 @@ professor/responsável
 
 número de vagas
 
-✔ Listagem de eventos
+-Listagem de eventos
 
 Interface amigável para visualizar todos os eventos cadastrados.
 
-✔ Detalhamento do evento
+- Detalhamento do evento
 
 Exibe informações completas do evento selecionado.
 
-✔ Edição e exclusão
+- Edição e exclusão
 
 Administradores podem editar ou remover eventos facilmente.
 
-✔ API REST completa
+- API REST completa
 
 Todas as operações também podem ser realizadas via endpoints JSON.
+
+
+ ## O sistema segue a estrutura tradicional de um projeto Django:
+
+Models
+
+Representam os eventos no banco de dados.
+Cada evento é mapeado como uma tabela no SQLite.
+
+Views
+
+Controlam:
+
+Páginas web (HTML)
+
+Operações da API (JSON)
+
+Serializers
+
+Transformam modelos em JSON para a API e validam dados recebidos.
+
+Forms
+
+Criam automaticamente formulários para cadastro/edição de eventos.
+
+Templates
+
+Páginas HTML usadas para exibir listas, formulários, detalhes, etc.
+
+URLs
+
+Cada funcionalidade (web e API) possui uma rota própria.
+
+
+
+## Como inicializar?
+
+Clonar o repositório
+git clone https://github.com/luislustosa/Projeto-Web
+cd Projeto-Web
+
+python -m venv venv
+venv\Scripts\activate
+
+pip install -r requirements.txt
+
+python manage.py migrate
+
+python manage.py runserver
+
+ACESSAR : http://localhost:8000
+
