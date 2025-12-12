@@ -95,10 +95,14 @@ Cada funcionalidade (web e API) possui uma rota própria.
 ## Como inicializar?
 
 Clonar o repositório
+
+
 git clone https://github.com/luislustosa/Projeto-Web
+
 cd Projeto-Web
 
 python -m venv venv
+
 venv\Scripts\activate
 
 pip install -r requirements.txt
@@ -107,5 +111,45 @@ python manage.py migrate
 
 python manage.py runserver
 
+(TODOS ESSES COMANDOS NO TERMINAL)
+
 ACESSAR : http://localhost:8000
 
+
+## COMO POPULAR O BANCO DE DADOS? 
+
+acessar a conta de admin -- nome: Organizador ; senha: Admin@123 
+
+#### OU usando o script python
+
+Por exemplo:
+import requests
+
+evento = {
+    "titulo": "Seminário de IA",
+    "descricao": "Discussão sobre IA Generativa",
+    "local": "Sala 12",
+    "data": "2025-04-10",
+    "horario": "09:30",
+    "vagas": 50
+}
+
+requests.post("http://localhost:8000/api/eventos/", json=evento)
+
+#### OU por meio da api - Postman
+
+POST /api/eventos/
+
+{
+  "titulo": "Semana da Computação",
+  "descricao": "Evento com palestras e workshops",
+  "local": "Auditório Central",
+  "data": "2025-03-20",
+  "horario": "14:00",
+  "vagas": 120
+}
+
+
+Conclusao:
+Este Sistema de Gerenciamento de Eventos Acadêmicos demonstra um projeto completo Django:
+CRUD, API REST, templates, formulários e banco de dados.
