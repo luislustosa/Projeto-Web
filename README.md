@@ -4,7 +4,7 @@
 
 Luis Antônio Lustosa de Araújo Costa — RA: 22401677
 
-Davi de Albuquerque Chavante — RA: XXXX
+Davi de Albuquerque Chavante — RA: 22406020
 
 Davi Carvalho Aguiar Morais — RA: 22350152
 
