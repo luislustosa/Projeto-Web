@@ -1,0 +1,575 @@
+/* === RESET GLOBAL === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+body {
+  padding-top: 70px; /* espaço para header fixo */
+  padding-bottom: 80px; /* espaço para footer fixo */
+}
+
+/* === HEADER FIXO === */
+header {
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #0b3c5d;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.brand-logo {
+  height: 36px;
+  width: auto;
+}
+
+.brand-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* === MENU DE NAVEGAÇÃO === */
+.menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.menu li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* === BOTÃO LOGOUT === */
+.btn-logout {
+  background-color: #eef2f6;
+  color: #1f2937;
+  border: 1px solid #d1d5db;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  background-color: #e0e4e8;
+}
+
+/* === HAMBURGUER MENU (Mobile) === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2.5px;
+  background: white;
+  border-radius: 2px;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #0b3c5d;
+    padding: 16px 0;
+    text-align: center;
+  }
+
+  #nav-toggle:checked ~ .menu {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* === BANNER === */
+.banner {
+  background: #e9f1f7;
+  color: #0b3c5d;
+  text-align: center;
+  padding: 40px 20px 60px;
+  width: 100%;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.banner h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.banner p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === CONTEÚDO PRINCIPAL === */
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* === FORMULÁRIOS === */
+.form-container {
+  max-width: 450px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.form-container h2 {
+  color: #0b3c5d;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #f9fafb;
+  margin-bottom: 14px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #0b3c5d;
+  box-shadow: 0 0 0 2px rgba(11,60,93,0.2);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #0b3c5d;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #092b45;
+}
+
+/* === LISTA DE EVENTOS === */
+.lista, .eventos-lista {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fefefe;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lista > div, .eventos-lista li, .lista-container > div {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.lista > div:hover, .eventos-lista li:hover, .lista-container > div:hover {
+  background-color: #f0f4f8;
+}
+
+.lista a, .eventos-lista li a {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #1b0e67;
+  text-decoration: none;
+}
+
+.lista a:hover, .eventos-lista li a:hover {
+  text-decoration: underline;
+}
+
+.lista p, .eventos-lista li p {
+  margin: 5px 0 0 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.lista p:empty, .eventos-lista li p:empty {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+/* === BOTÕES PADRÃO === */
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+.btn:hover { opacity: 0.9; }
+
+.btn.secundario { background-color: #aaa; }
+.btn.perigo { background-color: #e74c3c; }
+.btn { background-color: #4a90e2; }
+
+/* === CONTAINERS DE EVENTOS E LISTA === */
+.evento-container, .lista-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.evento-container h2, .lista-container h1, .lista-container h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* === FOOTER FIXO === */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8fafc;
+  color: #4b5563;
+  padding: 16px 24px;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+  z-index: 1000;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-links a {
+  color: #4b5563;
+  text-decoration: none;
+  margin: 0 6px;
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover { text-decoration: underline; }
+
+/* === ACESSIBILIDADE === */
+:focus-visible {
+  outline: 3px solid #0b3c5d;
+  outline-offset: 3px;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #0b3c5d;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* mantém espaçamento entre logo e menu */
+  padding: 0 24px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Menu principal */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu li {
+  list-style: none;
+}
+
+/* Botão "Meus Eventos" dentro do menu */
+.menu li a.btn-meus-eventos {
+  background-color: #4a90e2;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.menu li a.btn-meus-eventos:hover {
+  background-color: #357ab8;
+}
+
+/* Garante que todos os links no menu fiquem alinhados verticalmente */
+.menu li a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 6px 10px;
+}
+
+.banner {
+    text-align: center;
+    background-color: #f0f4f8;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.titulo-eventos {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.lista {
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.evento-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+.btn-evento {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.btn-evento:hover {
+    background-color: #0056b3;
+}
+
+.nenhum-evento {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+}
+
+/* === MINHAS INSCRIÇÕES === */
+.minhas-inscricoes {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fefefe;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.minhas-inscricoes h1 {
+  text-align: center;
+  color: #0b3c5d;
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+
+.minhas-inscricoes ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.minhas-inscricoes ul li {
+  list-style-type: none;
+  padding: 12px 15px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.minhas-inscricoes ul li:hover {
+  background-color: #f0f4f8;
+  transform: translateY(-2px);
+}
+
+.minhas-inscricoes ul li a {
+  color: #007bff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.minhas-inscricoes ul li a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Mensagem caso não haja inscrições */
+.minhas-inscricoes ul li:empty {
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .minhas-inscricoes {
+    width: 90%;
+    padding: 25px;
+  }
+}
+
+/* Container centralizado */
+.confirm-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Títulos e textos */
+.confirm-container h2 {
+  margin-bottom: 15px;
+  color: #0d3b66;
+}
+
+.confirm-container p {
+  margin-bottom: 25px;
+  font-size: 16px;
+  color: #333333;
+}
+
+/* Botões lado a lado */
+.form-buttons {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  gap: 15px; /* espaço entre botões */
+  flex-wrap: wrap; /* responsivo em telas pequenas */
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center; /* centraliza os botões */
+  gap: 15px; /* espaço entre eles */
+  flex-wrap: wrap; /* para mobile */
+}
+
+.form-buttons .btn {
+  width: auto; /* permite que cada botão tenha tamanho baseado no conteúdo */
+  padding: 10px 20px; /* mantém espaçamento interno */
+}
+
+.form-buttons .btn-confirm {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.form-buttons .btn-cancel {
+  background-color: #cccccc;
+  color: #333;
+}
+

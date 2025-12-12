@@ -1,0 +1,8 @@
+<h1>Seus Certificados</h1>
+<ul>
+  {% for inscricao in inscricoes %}
+    <li>Evento: {{ inscricao.evento.nome }} - Certificado Emitido!</li>
+  {% empty %}
+    <li>Você não possui certificados pendentes.</li>
+  {% endfor %}
+</ul>

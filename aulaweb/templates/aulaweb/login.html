@@ -1,0 +1,22 @@
+{% extends "aulaweb/base.html" %}
+
+{% block conteudo %}
+<div class="login-container">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="message {{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p>Não tem conta? <a href="{% url 'cadastro_usuario' %}">Cadastre-se</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h2>Você saiu da sua conta.</h2>
+  <p><a href="{% url 'login' %}">Fazer login novamente</a></p>
+  <p><a href="{% url 'index' %}">Voltar à página inicial</a></p>
+</div>
+{% endblock %}

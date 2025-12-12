@@ -1,0 +1,33 @@
+{% extends "aulaweb/base.html" %}
+
+{% block title %}Meus Eventos{% endblock %}
+
+{% block conteudo %}
+<h1>Meus Eventos</h1>
+
+{% if eventos_info %}
+<div class="lista-container">
+    {% for item in eventos_info %}
+        <div class="evento-container">
+            <h2>{{ item.evento.nome }}</h2>
+            <p><strong>Data:</strong> {{ item.evento.data_inicio }}{% if item.evento.data_fim %} - {{ item.evento.data_fim }}{% endif %}</p>
+            <p><strong>Hora:</strong> {{ item.evento.hora_inicio }}{% if item.evento.hora_fim %} - {{ item.evento.hora_fim }}{% endif %}</p>
+            <p><strong>Local:</strong> {{ item.evento.local }}</p>
+            <p><strong>Tipo:</strong> {{ item.evento.tipo }}</p>
+            <p><strong>Inscritos:</strong> {{ item.inscritos }}</p>
+
+            <div class="botoes">
+                <a href="{% url 'detalhe_evento' item.evento.id %}" class="btn">Ver Detalhes</a>
+                <a href="{% url 'deletar_evento' item.evento.id %}" class="btn perigo">Excluir</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="form-container">
+    <p>Você ainda não criou nenhum evento.</p>
+    <a href="{% url 'cadastro_evento' %}" class="btn">Cadastrar Evento</a>
+</div>
+{% endif %}
+
+{% endblock %}

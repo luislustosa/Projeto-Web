@@ -1,0 +1,29 @@
+{% extends "aulaweb/base.html" %}
+{% block title %}Página Inicial{% endblock %}
+
+{% block conteudo %}
+<div class="banner">
+    <h1>Bem-vindo ao Portal de Eventos Acadêmicos</h1>
+    <p>Workshops, palestras e feiras de carreira para potencializar sua formação.</p>
+</div>
+
+<h2 class="titulo-eventos">Eventos</h2>
+
+<div class="lista">
+    {% for item in eventos_info %}
+    <div class="evento-container">
+        <a href="{% url 'detalhe_evento' item.evento.id %}" class="btn-evento">
+            {{ item.evento.nome }}
+        </a>
+        <p><strong>Data:</strong> {{ item.evento.data_inicio }}{% if item.evento.data_fim %} - {{ item.evento.data_fim }}{% endif %}</p>
+        <p><strong>Hora:</strong> {{ item.evento.hora_inicio }}{% if item.evento.hora_fim %} - {{ item.evento.hora_fim }}{% endif %}</p>
+        <p><strong>Local:</strong> {{ item.evento.local }}</p>
+        <p><strong>Tipo:</strong> {{ item.evento.tipo }}</p>
+        <p><strong>Inscritos:</strong> {{ item.inscritos }}</p>
+    </div>
+    {% empty %}
+    <p class="nenhum-evento">Nenhum evento cadastrado no momento.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% extends "aulaweb/base.html" %}
+
+{% block conteudo %}
+<div class="minhas-inscricoes">
+  <h1>Minhas Inscrições</h1>
+  <ul>
+    {% for i in inscricoes %}
+      <li>
+        {{ i.evento.nome }} - {{ i.evento.data_inicio }}
+        {% if i.certificado_emitido %}
+          - <a href="{% url 'certificado' i.id %}">Ver certificado</a>
+        {% else %}
+          - <a href="{% url 'certificado' i.id %}">Gerar Certificado</a>
+        {% endif %}
+      </li>
+    {% empty %}
+      <li>Você não possui inscrições.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

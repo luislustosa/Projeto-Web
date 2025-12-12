@@ -1,0 +1,16 @@
+{% extends 'aulaweb/base.html' %}
+
+{% block conteudo %}
+<div class="confirm-container">
+    <h2>Excluir Evento</h2>
+    <p>Tem certeza que deseja excluir o evento <strong>{{ evento.nome }}</strong>?</p>
+
+    <div class="form-buttons">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-confirm">Sim, excluir</button>
+        </form>
+        <a href="{% url 'detalhe_evento' evento.id %}" class="btn btn-cancel">Cancelar</a>
+    </div>
+</div>
+{% endblock %}

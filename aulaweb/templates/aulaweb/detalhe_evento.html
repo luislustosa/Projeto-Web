@@ -1,0 +1,27 @@
+{% extends "aulaweb/base.html" %}
+{% load static %}
+
+{% block title %}{{ evento.nome }}{% endblock %}
+
+{% block conteudo %}
+<div class="evento-container">
+    <h2>{{ evento.nome }}</h2>
+    <p><strong>Data:</strong> {{ evento.data }}</p>
+    <p><strong>Local:</strong> {{ evento.local }}</p>
+    <p><strong>Descrição:</strong> {{ evento.descricao }}</p>
+
+    <div class="botoes">
+        <a href="{% url 'inscrever_evento' evento.id %}" class="btn">Inscrever-se</a>
+        <a href="{% url 'lista_eventos' %}" class="btn secundario">Voltar</a>
+
+        {% if user == evento.organizador %}
+            <a href="{% url 'deletar_evento' evento.id %}" class="btn perigo">Excluir evento</a>
+        {% endif %}
+    </div>
+</div>
+
+{% if evento.banner %}
+    <img src="{{ evento.banner.url }}" alt="Banner do Evento" style="max-width:100%;">
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "aulaweb/base.html" %}
+{% load static %}
+
+{% block title %}Lista de Eventos{% endblock %}
+
+{% block conteudo %}
+<div class="lista-container">
+    <h1>Eventos</h1>
+    
+
+    <ul class="eventos-lista">
+        {% for evento in eventos %}
+            <li>
+                <a href="{% url 'detalhe_evento' evento.id %}">
+                    <strong>{{ evento.nome }}</strong> - {{ evento.data_inicio }} - {{ evento.local }}
+                </a>
+            </li>
+        {% empty %}
+            <li>Nenhum evento cadastrado.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'index' %}" class="btn secundario">Início</a>
+    <a href="{% url 'cadastro_evento' %}" class="btn">Cadastrar novo evento</a>
+</div>
+{% endblock %}

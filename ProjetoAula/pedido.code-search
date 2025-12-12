@@ -1,0 +1,70 @@
+# Query: pedido
+# ContextLines: 1
+
+28 results - 5 files
+
+ProjetoAula\aulaweb\migrations\0002_categoria_cliente_produto_data_atualizacao_and_more.py:
+   78          migrations.CreateModel(
+   79:             name='Iteminscricao',
+   80              fields=[
+
+   85              options={
+   86:                 'verbose_name': 'Item do inscricao',
+   87:                 'verbose_name_plural': 'Itens do inscricao',
+   88:                 'db_table': 'item_inscricao',
+   89              },
+
+   91          migrations.CreateModel(
+   92:             name='inscricao',
+   93              fields=[
+   94                  ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+   95:                 ('data_inscricao', models.DateTimeField(auto_now_add=True)),
+   96:                 ('cliente', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='inscricaos', to='aulaweb.cliente')),
+   97:                 ('produtos', models.ManyToManyField(through='aulaweb.Iteminscricao', to='aulaweb.produto')),
+   98              ],
+   99              options={
+  100:                 'verbose_name': 'inscricao',
+  101:                 'verbose_name_plural': 'inscricaos',
+  102:                 'db_table': 'inscricao',
+  103:                 'ordering': ['-data_inscricao'],
+  104              },
+
+  106          migrations.AddField(
+  107:             model_name='iteminscricao',
+  108:             name='inscricao',
+  109:             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='aulaweb.inscricao'),
+  110          ),
+
+ProjetoAula\aulaweb\templates\aulaweb\base.html:
+  36  
+  37:           {#<li><a href="{% url 'certificado' inscricao.id %}"> Emissão de Certificado</a></li>#}
+  38            <li><a href="{% url 'list_orders' %}">Cadastro</a></li>
+
+ProjetoAula\aulaweb\templates\aulaweb\order\create_order.html:
+  19  
+  20:   {{ inscricao_form.as_p }}
+  21:   {# Renderiza o formulário principal "inscricao_form" como parágrafos (<p>) #}
+  22  
+
+  56        let formsetArea = document.getElementById("formset-area");
+  57:       let totalForms = document.getElementById("id_iteminscricao_set-TOTAL_FORMS");
+  58        let formNum = parseInt(totalForms.value);
+
+ProjetoAula\aulaweb\templates\aulaweb\order\delete_order.html:
+  5  <h1>Excluir Conta</h1>
+  6: <p>Tem certeza que deseja excluir a conta {{ inscricao }}?</p>
+  7  <form method="post">
+
+ProjetoAula\aulaweb\templates\aulaweb\order\list_orders.html:
+  11  
+  12:   {% for inscricao in inscricaos %}
+  13      <div class="produto-card">
+  14:       <div class="produto-nome">{{ inscricao }}</div>
+  15:       <div class="produto-preco">R$ {{ inscricao.data_inscricao }}</div>
+  16        <ul>
+  17:         {% for item in inscricao.iteminscricao_set.all %}
+  18            <li>{{ item.quantidade }}x {{ item.produto.nome }}</li>
+
+  21        <div style="margin-top:10px;">
+  22:         <a href="{% url 'delete_order' inscricao.pk %}">🗑️ Remover Conta</a>
+  23        </div>
