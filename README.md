@@ -123,6 +123,8 @@ acessar a conta de admin -- nome: Organizador ; senha: Admin@123
 #### OU usando o script python
 
 Por exemplo:
+
+""
 import requests
 
 evento = {
@@ -134,11 +136,17 @@ evento = {
     "vagas": 50
 }
 
+""
+
 requests.post("http://localhost:8000/api/eventos/", json=evento)
 
 #### OU por meio da api - Postman
 
+
+
 POST /api/eventos/
+
+Em seguida,
 
 {
   "titulo": "Semana da Computação",
